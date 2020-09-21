@@ -1,0 +1,11 @@
+.ball-box {
+    width: 60vh;
+    height: 70vh;
+}
+
+.ball {
+    width: 10px;
+    height: 10px;
+    background: #c8c8c8;
+    border-radius: 50%;
+}
