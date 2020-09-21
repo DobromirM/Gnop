@@ -1,8 +1,12 @@
 package game.paddle;
 
+import utilities.Utilities;
+
 public class Paddle {
     private int position;
     private PaddleSide side;
+
+    private Utilities util = new Utilities();
 
     public Paddle(PaddleSide side) {
         this.side = side;
@@ -10,22 +14,15 @@ public class Paddle {
     }
 
     public void moveUp() {
-        if (isPaddleInArea()) {
+        if (util.isInArea(position)) {
             this.position++;
         }
     }
 
     public void moveDown() {
-        if (isPaddleInArea()) {
+        if (util.isInArea(position)) {
             this.position--;
         }
-    }
-
-    public boolean isPaddleInArea() {
-        if (position <= 100 && position >= -100) {
-            return true;
-        }
-        return false;
     }
 
     public int getPosition() {

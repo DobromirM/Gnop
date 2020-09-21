@@ -1,7 +1,9 @@
 package game.paddle;
 
+import game.ball.Ball;
 import org.junit.Assert;
 import org.junit.Test;
+import utilities.Utilities;
 
 public class PaddleTest {
 
@@ -35,12 +37,29 @@ public class PaddleTest {
     public void testIsPaddleInArea() {
 
         // Given
+        Utilities util = new Utilities();
         Paddle paddle = new Paddle(PaddleSide.LEFT);
 
         // When
-        paddle.isPaddleInArea();
+        paddle.moveUp();
+        util.isInArea(paddle.getPosition());
 
         //Then
-        Assert.assertTrue(paddle.isPaddleInArea());
+        Assert.assertTrue(util.isInArea(paddle.getPosition()));
+    }
+
+    @Test
+    public void testIsBallInArea() {
+
+        // Given
+        Utilities util = new Utilities();
+        Ball ball = new Ball();
+
+        // When
+        ball.moveUp();
+        util.isInArea(ball.getYCoordinate());
+
+        //Then
+        Assert.assertTrue(util.isInArea(ball.getYCoordinate()));
     }
 }
