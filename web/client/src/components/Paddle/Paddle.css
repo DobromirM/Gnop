@@ -1,0 +1,9 @@
+.paddle-box {
+    height: 70vh;
+}
+
+.paddle {
+    background: #c8c8c8;
+    width: 1rem;
+    height: 10vh;
+}
