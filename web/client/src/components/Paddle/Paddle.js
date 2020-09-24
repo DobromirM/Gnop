@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
-import "./PaddleLeft.css";
+import "./Paddle.css";
 
 class PaddleLeft extends Component {
     state = {
-        pos: 30
+        pos: 30,
+        velocity: 1
     }
 
     move = (event) => {
-        if(event.key === "w" && this.state.pos > 0) {
+        if(event.key === this.props.keyUp && this.state.pos > this.props.boundary.top) {
             this.setState({
-                pos: this.state.pos - 1
+                pos: this.state.pos - this.state.velocity
             })
         }
-        if (event.key === "s" && this.state.pos < 60) {
+        if (event.key === this.props.keyDown && this.state.pos < this.props.boundary.bottom) {
             this.setState({
-                pos: this.state.pos + 1
+                pos: this.state.pos + this.state.velocity
             })
         }
     }
@@ -29,8 +30,8 @@ class PaddleLeft extends Component {
 
     render() {
         return (
-            <div className="paddleLeft-box">
-                <div className="paddleLeft" style={{margin: this.state.pos + "vh 0 0 0"}}>
+            <div className="paddle-box">
+                <div className="paddle" style={{margin: this.state.pos + "vh 0 0 0"}}>
 
                 </div>
             </div>
