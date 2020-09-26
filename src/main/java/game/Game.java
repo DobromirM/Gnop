@@ -1,15 +1,18 @@
 package game;
 
+import game.ball.Ball;
 import game.paddle.Paddle;
 import game.paddle.PaddleSide;
 
 public class Game {
 
-    private Paddle left_paddle;
-    private Paddle right_paddle;
+    private Paddle leftPaddle;
+    private Paddle rightPaddle;
+    private Ball ball;
 
     public Game() {
-        this.left_paddle = new Paddle(PaddleSide.LEFT);
-        this.right_paddle = new Paddle(PaddleSide.RIGHT);
+        this.leftPaddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
+        this.rightPaddle = new Paddle(PaddleSide.RIGHT, 5, 10, 195, 0);
+        this.ball = new Ball(100, 0, 5);
     }
 }

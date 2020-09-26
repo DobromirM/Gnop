@@ -11,26 +11,26 @@ public class PaddleTest {
     public void testMoveUp() {
 
         // Given
-        Paddle paddle = new Paddle(PaddleSide.LEFT);
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
 
         //When
         paddle.moveUp();
 
         //Then
-        Assert.assertEquals(1, paddle.getPosition());
+        Assert.assertEquals(1, paddle.getPosition().getYCoordinate());
     }
 
     @Test
     public void testMoveDown() {
 
         //Given
-        Paddle paddle = new Paddle(PaddleSide.LEFT);
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
 
         //When
         paddle.moveDown();
 
         //Then
-        Assert.assertEquals(-1, paddle.getPosition());
+        Assert.assertEquals(-1, paddle.getPosition().getYCoordinate());
     }
 
     @Test
@@ -38,14 +38,14 @@ public class PaddleTest {
 
         // Given
         Utilities util = new Utilities();
-        Paddle paddle = new Paddle(PaddleSide.LEFT);
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
 
         // When
         paddle.moveUp();
-        util.isInArea(paddle.getPosition());
+        util.isInArea(paddle.getPosition().getYCoordinate());
 
         //Then
-        Assert.assertTrue(util.isInArea(paddle.getPosition()));
+        Assert.assertTrue(util.isInArea(paddle.getPosition().getYCoordinate()));
     }
 
     @Test
@@ -53,13 +53,13 @@ public class PaddleTest {
 
         // Given
         Utilities util = new Utilities();
-        Ball ball = new Ball();
+        Ball ball = new Ball(100, 0, 5);
 
         // When
         ball.moveUp();
-        util.isInArea(ball.getYCoordinate());
+        util.isInArea(ball.getPosition().getYCoordinate());
 
         //Then
-        Assert.assertTrue(util.isInArea(ball.getYCoordinate()));
+        Assert.assertTrue(util.isInArea(ball.getPosition().getYCoordinate()));
     }
 }
