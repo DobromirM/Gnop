@@ -48,10 +48,15 @@ public class Game {
         }
     }
 
-    public void scoreGoal() {
+    public boolean isBallBehindPaddle() {
         if (ball.getPosition().getXCoordinate() < leftPaddle.getPosition().getXCoordinate() || ball.getPosition().getXCoordinate() < rightPaddle.getPosition().getXCoordinate()) {
-            this.ballScore++;
+            return true;
         }
+        return false;
+    }
+
+    public void scoreGoal() {
+        this.ballScore++;
     }
 
     public void createGameLoop() {
@@ -67,6 +72,9 @@ public class Game {
                 changeBallDirection();
             }
 
+            if (isBallBehindPaddle()) {
+                this.ballScore++;
+            }
         }
     }
 }
