@@ -1,6 +1,7 @@
 package game.paddle;
 
-import game.ball.Ball;
+import game.Direction;
+import game.gameArea.GameArea;
 import org.junit.Assert;
 import org.junit.Test;
 import utilities.Utilities;
@@ -11,26 +12,28 @@ public class PaddleTest {
     public void testMoveUp() {
 
         // Given
-        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
+        GameArea gameArea = new GameArea();
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, gameArea.getLeft() + 5, gameArea.getTop() / 2);
 
         //When
-        paddle.moveUp();
+        paddle.move(Direction.UP);
 
         //Then
-        Assert.assertEquals(1, paddle.getPosition().getYCoordinate());
+        Assert.assertEquals(51, paddle.getPosition().getYCoordinate());
     }
 
     @Test
     public void testMoveDown() {
 
         //Given
-        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
+        GameArea gameArea = new GameArea();
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, gameArea.getLeft() + 5, gameArea.getTop() / 2);
 
         //When
-        paddle.moveDown();
+        paddle.move(Direction.DOWN);
 
         //Then
-        Assert.assertEquals(-1, paddle.getPosition().getYCoordinate());
+        Assert.assertEquals(49, paddle.getPosition().getYCoordinate());
     }
 
     @Test
@@ -38,28 +41,13 @@ public class PaddleTest {
 
         // Given
         Utilities util = new Utilities();
-        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, 5, 0);
+        GameArea gameArea = new GameArea();
+        Paddle paddle = new Paddle(PaddleSide.LEFT, 5, 10, gameArea.getLeft() + 5, gameArea.getTop() / 2);
 
         // When
-        paddle.moveUp();
         util.isInArea(paddle.getPosition().getYCoordinate());
 
         //Then
         Assert.assertTrue(util.isInArea(paddle.getPosition().getYCoordinate()));
-    }
-
-    @Test
-    public void testIsBallInArea() {
-
-        // Given
-        Utilities util = new Utilities();
-        Ball ball = new Ball(100, 0, 5);
-
-        // When
-        ball.moveUp();
-        util.isInArea(ball.getPosition().getYCoordinate());
-
-        //Then
-        Assert.assertTrue(util.isInArea(ball.getPosition().getYCoordinate()));
     }
 }

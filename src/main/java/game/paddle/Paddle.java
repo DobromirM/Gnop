@@ -1,5 +1,6 @@
 package game.paddle;
 
+import game.Direction;
 import game.coordinates.Coordinates;
 import game.shapes.Rectangle;
 import utilities.Utilities;
@@ -19,15 +20,13 @@ public class Paddle {
         this.position = new Coordinates(xCoordinate, yCoordinate);
     }
 
-    public void moveUp() {
+    public void move(Direction direction) {
         if (util.isInArea(position.getYCoordinate())) {
-            this.position.setYCoordinate(position.getYCoordinate() + velocity);
-        }
-    }
-
-    public void moveDown() {
-        if (util.isInArea(position.getYCoordinate())) {
-            this.position.setYCoordinate(position.getYCoordinate() - velocity);
+            if (direction == Direction.UP) {
+                this.position.setYCoordinate(position.getYCoordinate() + velocity);
+            } else if (direction == Direction.DOWN) {
+                this.position.setYCoordinate(position.getYCoordinate() - velocity);
+            }
         }
     }
 
