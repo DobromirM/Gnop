@@ -1,7 +1,6 @@
-package game.paddle;
+package game.ball;
 
 import game.Direction;
-import game.ball.Ball;
 import game.gameArea.GameArea;
 import org.junit.Assert;
 import org.junit.Test;

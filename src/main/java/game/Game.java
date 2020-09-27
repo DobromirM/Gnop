@@ -17,6 +17,10 @@ public class Game {
 
     private boolean isRunning;
     private int ballScore;
+    private final boolean collisionWithLeftPaddle = leftPaddle.getPosition().equals(ball.getPosition());
+    private final boolean collisionWithRightPaddle = rightPaddle.getPosition().equals(ball.getPosition());
+    private final boolean ballBehindLeftPaddle = ball.getPosition().getXCoordinate() < leftPaddle.getPosition().getXCoordinate();
+    private final boolean ballBehindRightPaddle = ball.getPosition().getXCoordinate() > rightPaddle.getPosition().getXCoordinate();
 
     public Game() {
         this.gameArea = new GameArea();
@@ -34,7 +38,7 @@ public class Game {
     }
 
     public boolean didBallCollide() {
-        if (leftPaddle.getPosition().equals(ball.getPosition()) || rightPaddle.getPosition().equals(ball.getPosition())) {
+        if (collisionWithLeftPaddle || collisionWithRightPaddle) {
             return true;
         }
         return false;
@@ -49,7 +53,7 @@ public class Game {
     }
 
     public boolean isBallBehindPaddle() {
-        if (ball.getPosition().getXCoordinate() < leftPaddle.getPosition().getXCoordinate() || ball.getPosition().getXCoordinate() < rightPaddle.getPosition().getXCoordinate()) {
+        if (ballBehindLeftPaddle || ballBehindRightPaddle) {
             return true;
         }
         return false;
